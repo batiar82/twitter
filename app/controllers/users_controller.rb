@@ -3,4 +3,9 @@ class UsersController < ApplicationController
     def index
         @users = User.all
     end
+    def follow
+        userToFollow=User.find(params[:email])
+        current_user.follow(userToFollow)
+        
+    end
 end
