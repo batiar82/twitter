@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Usuarios de la red</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Follow</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td>Seguir / Dejar de seguir</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

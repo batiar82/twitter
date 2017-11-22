@@ -7,6 +7,9 @@ class TweetsController < ApplicationController
     @tweets = Tweet.all
   end
 
+  def timeline
+    @tweets = Tweet.all
+  end
   # GET /tweets/1
   # GET /tweets/1.json
   def show
