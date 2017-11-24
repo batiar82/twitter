@@ -10,14 +10,6 @@ class UsersController < ApplicationController
         else
             current_user.follow(@userToFollow)
         end
-        @palabra="lalala"
-        respond_to do |format|
-            format.js
-        end
-    end
-     def unfollow
-        userToUnFollow=User.find(params[:email])
-        current_user.unfollow(userToUnFollow)
         respond_to do |format|
             format.js
         end

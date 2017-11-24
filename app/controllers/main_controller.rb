@@ -3,6 +3,7 @@ class MainController < ApplicationController
   def welcome
     #if user_signed_in?
       @tweets=current_user.tweets
+      render 'timeline'
     #else
       #render template: "devise/sessions/new"
      # redirect_to "/users/sign_in"

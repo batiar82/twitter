@@ -1,7 +1,13 @@
-      <tr id="<%=tweet.id%>">
-        <td><%= tweet.post %></td>
-        <td><%= tweet.User.email %></td>
-        <td><%= link_to 'Show', tweet %></td>
-        <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
-        <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="row <%=dom_id(tweet)%>">
+		<div class="col-md-2 offset-md-3">
+				 <%= tweet.User.email %>
+		</div>
+		<div class="col-md-4">
+			<p><%= tweet.post %></p>
+			<i class="fa fa-heart" aria-hidden="true"></i>
+			<i class="fa fa-comment" aria-hidden="true"></i>
+			<div class="float-right">
+				<%=tweet.created_at.strftime('Creado el %e/%m/%Y a las %H:%M') %>
+			</div>
+		</div>
+	</div>
