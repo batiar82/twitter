@@ -28,6 +28,7 @@ class TweetsController < ApplicationController
   # POST /tweets.json
   def create
     @tweet = Tweet.new(tweet_params)
+    @tweet.User=current_user
 
     respond_to do |format|
       if @tweet.save
@@ -37,6 +38,7 @@ class TweetsController < ApplicationController
         format.html { render :new }
         format.json { render json: @tweet.errors, status: :unprocessable_entity }
       end
+      format.js
     end
   end
 

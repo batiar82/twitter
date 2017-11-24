@@ -11,19 +11,19 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @tweets.each do |tweet| %>
-      <tr>
-        <td><%= tweet.post %></td>
-        <td><%= tweet.User %></td>
-        <td><%= link_to 'Show', tweet %></td>
-        <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
-        <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <tbody id="tweets">
+    
+      <%= render @tweets %>
+    
   </tbody>
 </table>
-
-<br>
-
+<%= form_for(Tweet.new, remote: true) do |f| %>
+  <div class="field">
+    <%= f.label :post %>
+    <%= f.text_area :post, id: :tweet_post %>
+  </div>
+  <div class="actions">
+    <%=f.submit%>
+  </div>
+<%end%>
 <%= link_to 'New Tweet', new_tweet_path %>

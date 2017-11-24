@@ -12,9 +12,18 @@
 
   <tbody>
     <% @users.each do |user| %>
+      
       <tr>
         <td><%= user.email %></td>
-        <td>Seguir / Dejar de seguir</td>
+        <td>
+          <span class="<%=dom_id(user)%>">
+            <% if current_user.following?(user)%>
+              <%= link_to 'Dejar de seguir', follow_user_path(user), remote: true %>
+            <%else%>
+              <%= link_to 'Seguir', follow_user_path(user), remote: true %>
+            <%end%>
+          </span>
+        </td>
       </tr>
     <% end %>
   </tbody>

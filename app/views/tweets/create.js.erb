@@ -1,0 +1,6 @@
+<% if @tweet.new_record? %>
+    $('textarea#tweet_post').effect('highlight', {color: 'red' });
+<%else%>
+    $("tbody#tweets").append("<%= escape_javascript(render @tweet) %>");
+    $("tr#<%=dom_id(@tweet) %>").effect('highlight');
+<%end%>

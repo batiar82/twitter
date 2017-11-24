@@ -1,0 +1,6 @@
+var elSpan=$('.<%=dom_id(@userToFollow)%>');
+<% if @current_user.following?(@userToFollow)%>
+    elSpan.html('<%= link_to 'Dejar de seguir', follow_user_path(@userToFollow), remote: true %>');
+<%else%>
+    elSpan.html('<%= link_to 'Seguir', follow_user_path(@userToFollow), remote: true %>');
+<%end%>

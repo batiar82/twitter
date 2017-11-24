@@ -4,8 +4,22 @@ class UsersController < ApplicationController
         @users = User.all
     end
     def follow
-        userToFollow=User.find(params[:email])
-        current_user.follow(userToFollow)
-        
+        @userToFollow=User.find(params[:id])
+        if current_user.following?(@userToFollow)
+            current_user.unfollow(@userToFollow)
+        else
+            current_user.follow(@userToFollow)
+        end
+        @palabra="lalala"
+        respond_to do |format|
+            format.js
+        end
+    end
+     def unfollow
+        userToUnFollow=User.find(params[:email])
+        current_user.unfollow(userToUnFollow)
+        respond_to do |format|
+            format.js
+        end
     end
 end

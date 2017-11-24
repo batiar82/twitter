@@ -2,7 +2,12 @@ Rails.application.routes.draw do
   get 'main/welcome'
 
   resources :tweets
-  #resources :users
+  #resources :users do
+  #  get :follow, on: :member
+  
+  #end
+  get '/users/:id/follow', to: 'users#follow', as: 'follow_user'
+  get "tweet/timeline" => "tweets#timeline"
   get "users" => "users#index"
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
