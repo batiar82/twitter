@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   
   #end
   get '/users/:id/follow', to: 'users#follow', as: 'follow_user'
+  get '/users/:id/like', to: 'users#like', as: 'like_tweet'
   get '/users/:id/tweets', to: 'users#tweets', as: 'user_tweets'
   
   get "tweet/timeline" => "tweets#timeline"

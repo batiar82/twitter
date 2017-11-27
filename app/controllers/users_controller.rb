@@ -18,4 +18,15 @@ class UsersController < ApplicationController
         @tweets=User.find(params[:id]).tweets
         render 'main/timeline'
     end
+    def like
+        @tweetToLike=Tweet.find(params[:id])
+        if(current_user.liking?(@tweetToLike))
+            current_user.unlike(@tweetToLike)
+        else
+            current_user.like(@tweetToLike)
+        end
+        respond_to do |format|
+            format.js
+        end
+    end
 end
