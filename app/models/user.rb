@@ -14,7 +14,7 @@ class User < ApplicationRecord
     following << other
   end
   def unfollow(other)
-    following.delete(other)
+    following.destroy(other)
   end
   def following?(other)
     following.include?(other)
@@ -26,6 +26,9 @@ class User < ApplicationRecord
     favtweets << other
   end
   def unlike(other)
-    favtweets.delete(other)
+    
+    favtweets.destroy(other)
+    puts other.id
+    puts other.like_counter
   end
 end

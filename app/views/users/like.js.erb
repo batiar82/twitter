@@ -1,1 +1,2 @@
 $('#<%=dom_id(@tweetToLike)%>').toggleClass('liking',<%=@current_user.liking?(@tweetToLike)%>);
+$('span.<%=dom_id(@tweetToLike)%>').html(<%=@tweetToLike.like_counter%>);

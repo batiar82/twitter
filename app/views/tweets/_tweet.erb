@@ -9,6 +9,7 @@
 			<%else%>
 				<%= link_to '', like_tweet_path(tweet), remote: true, :class => "fa fa-heart",id: dom_id(tweet) %>
 			<%end%>	
+			<span class="<%=dom_id(tweet)%>"><%=tweet.like_counter%></span>
 			<i class="fa fa-comment" aria-hidden="true"></i>
 			<div class="float-right">
 				<%=tweet.created_at.strftime('Creado el %e/%m/%Y a las %H:%M') %>

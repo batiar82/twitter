@@ -22,8 +22,10 @@ class UsersController < ApplicationController
         @tweetToLike=Tweet.find(params[:id])
         if(current_user.liking?(@tweetToLike))
             current_user.unlike(@tweetToLike)
+            @tweetToLike=Tweet.find(@tweetToLike.id)
         else
             current_user.like(@tweetToLike)
+            #@tweet2=Tweet.find(@tweetToLike.id)
         end
         respond_to do |format|
             format.js
