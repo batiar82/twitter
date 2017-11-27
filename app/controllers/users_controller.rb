@@ -14,4 +14,8 @@ class UsersController < ApplicationController
             format.js
         end
     end
+    def tweets
+        @tweets=User.find(params[:id]).tweets
+        render 'main/timeline'
+    end
 end
