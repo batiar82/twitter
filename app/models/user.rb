@@ -32,7 +32,7 @@ class User < ApplicationRecord
     puts other.like_counter
   end
   def self.search(search)
-    # where("email LIKE ? OR username LIKE ?", "%#{search}%", "%#{search}%")
-    where("email LIKE ?", "%#{search}%") 
+    where("email LIKE ? OR username LIKE ?", "%#{search}%", "%#{search}%")
+    #where("email LIKE ?", "%#{search}%") 
   end
 end
