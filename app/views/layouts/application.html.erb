@@ -18,11 +18,11 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        
-        <%= link_to('Home', main_welcome_path, class: "nav-link") %>
-        
-      </li>
+      <% if user_signed_in?%>
+        <li class="nav-item active">
+          <%= link_to(current_user.email, main_welcome_path, class: "nav-link") %>
+        </li>
+      <%end%>
       <li class="nav-item">
         <%= link_to('Usuarios de la red', users_path, class: "nav-link") %>
         

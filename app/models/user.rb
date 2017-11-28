@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, password_length: 8..20
   has_many :followers, :class_name => 'Follow', :foreign_key => 'follower_id'
   has_many :followees, :class_name => 'Follow', :foreign_key => 'followee_id'
   has_many :tweets
