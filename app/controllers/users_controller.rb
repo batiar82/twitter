@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
     before_action :authenticate_user!
     def index
-        @users = User.all
+        if params[:search]
+            @users=User.search(params[:search])
+        else
+            @users = User.all
+        end
     end
     def follow
         @userToFollow=User.find(params[:id])

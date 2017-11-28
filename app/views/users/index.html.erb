@@ -1,34 +1,48 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Usuarios de la red</h1>
-<form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-<table>
-  <thead>
-    <tr>
-      <th>Email</th>
-      <th>Follow</th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @users.each do |user| %>
-      
-      <tr>
-        <td><%=link_to user.email, user_tweets_path(user) %></td>
-        <td>
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <div class="form-group">
+      <%= form_tag(users_path, :method => "get", id: "search-form", class: "form-inline my-2 my-lg-0") do %>
+ <!--     <form class="form-inline my-2 my-lg-0"> -->
+        <%= text_field_tag :search, params[:search], placeholder: "Search",class: "form-control mr-sm-2" %>
+        <%= submit_tag "Search", :name => nil, class: "btn btn-outline-success my-2 my-sm-0" %>
+      <% end %> 
+    <!--    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form> -->
+    </div>
+  </div>
+</div>
+
+
+
+<div id="users">
+  <% if @users.blank? %>
+    <h4>There are no users containing the term <%= params[:search] %>.</h4>
+  <% end %>
+  <% @users.each do |user| %>
+      <div class="row">
+        <div class="col-md-2 offset-md-3">
+				 <%=link_to user.email, user_tweets_path(user) %>
+        </div>
+        <div class="col-md-4">
+     
           <span class="<%=dom_id(user)%>">
             <% if current_user.following?(user)%>
-              <%= link_to 'Dejar de seguir', follow_user_path(user), remote: true %>
+              <%= link_to follow_user_path(user), remote: true, class: "btn btn-warning btn-sm" do %>
+                <i class="fa fa-user-plus">SIGUIENDO</i>
+              <%end%>
             <%else%>
-              <%= link_to 'Seguir', follow_user_path(user), remote: true %>
+              <%= link_to follow_user_path(user), remote: true, class: "btn btn-success btn-sm" do %>
+                <i class="fa fa-user-plus">SEGUIR</i>
+              <%end%>
             <%end%>
           </span>
-        </td>
-      </tr>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+</div>
 
