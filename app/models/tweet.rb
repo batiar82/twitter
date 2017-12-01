@@ -4,5 +4,5 @@ class Tweet < ApplicationRecord
   has_many :favorites
   has_many :users, through: :favorites
   #scope :newest_first, order(created_at: :desc)
-  default_scope { order("created_at DESC") }
+  default_scope { order("#{self.table_name}.created_at DESC") }
 end

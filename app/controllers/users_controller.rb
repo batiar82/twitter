@@ -4,7 +4,7 @@ class UsersController < ApplicationController
         if params[:search]
             @users=User.search(params[:search])
         else
-            @users = User.all
+            @users = User.where.not(id: current_user.id)
         end
     end
     def follow

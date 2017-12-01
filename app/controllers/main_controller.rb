@@ -3,7 +3,8 @@ class MainController < ApplicationController
   def welcome
     #if user_signed_in?
       user_ids=current_user.following.ids
-      @tweets=Tweet.where("user_id = ? OR user_id IN (?)",current_user.id,user_ids)
+      favorite_ids=current_user.favtweets.ids
+      @tweets=Tweet.where("user_id = ? OR user_id IN (?) OR id in(?)",current_user.id,user_ids,favorite_ids)
       render 'timeline'
     #else
       #render template: "devise/sessions/new"
