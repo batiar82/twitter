@@ -19,8 +19,8 @@ class UsersController < ApplicationController
         end
     end
     def tweets
-        @tweets=User.find(params[:id]).tweets
-        render 'main/timeline'
+        @user = User.find(params[:id])
+        render 'tweetsbyuser'
     end
     def like
         @tweetToLike=Tweet.find(params[:id])

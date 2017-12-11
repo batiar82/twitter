@@ -1,27 +1,17 @@
-<%= form_with(model: tweet, local: true) do |form| %>
-  <% if tweet.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2>
-
-      <ul>
-      <% tweet.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :post %>
-    <%= form.text_area :post, id: :tweet_post %>
-  </div>
-
-  <div class="field">
-    <%= form.label :User_id %>
-    <%= form.text_field :User_id, id: :tweet_User_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+<%= form_for(Tweet.new, remote: true) do |f| %>
+	<div class="row">
+		<div class="col-md-6 offset-md-3">
+			<div class="form-group">
+    		<label for="exampleFormControlTextarea1">Nuevo Tweet</label>
+				<%= f.text_area :post, id: :tweet_post, class: 'form-control' %>
+				<!--<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>-->
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 offset-md-3">
+			<!--<button type="button" class="btn btn-success float-right">Agregar</button>-->
+			<%=f.submit class: 'btn btn-success float-right'%>
+		</div>
+	</div>
+	<%end%>

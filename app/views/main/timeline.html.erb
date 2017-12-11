@@ -1,21 +1,5 @@
 <h1>Timeline</h1>   
-	<%= form_for(Tweet.new, remote: true) do |f| %>
-	<div class="row">
-		<div class="col-md-6 offset-md-3">
-			<div class="form-group">
-    		<label for="exampleFormControlTextarea1">Nuevo Tweet</label>
-				<%= f.text_area :post, id: :tweet_post, class: 'form-control' %>
-				<!--<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>-->
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-6 offset-md-3">
-			<!--<button type="button" class="btn btn-success float-right">Agregar</button>-->
-			<%=f.submit class: 'btn btn-success float-right'%>
-		</div>
-	</div>
-	<%end%>
+	<%=render "tweets/form"%>
 	<!--render de tweets-->
 	<div id="tweets">
 		<%= render @tweets %>

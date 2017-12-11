@@ -10,62 +10,10 @@
 
   <body>
      <!-- Static navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Twitter Clone</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <% if user_signed_in?%>
-        <li class="nav-item active">
-          <%= link_to(current_user.username, main_welcome_path, class: "nav-link") %>
-        </li>
-      <%end%>
-      <li class="nav-item">
-        <%= link_to('Usuarios de la red', users_path, class: "nav-link") %>
-        
-      </li>
-      <!--
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      -->
-      <li class="nav-item">
-        <% if user_signed_in?%>
-          <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "nav-link") %> 
-        <% else %>
-          <%= link_to('Login', new_user_session_path, class: "nav-link")  %>
-        <% end %>
-      </li>
-      <li class="nav-item">
-        <% if user_signed_in?%>
-          <%= link_to('Edit registration', edit_user_registration_path, class: "nav-link") %>
-        <% else %>
-          <%= link_to('Register', new_user_registration_path, class: "nav-link")  %>
-        <% end %>
-      </li>
-    </ul>
-    <!--
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-    -->
-  </div>
-</nav>
+    <%= render "layouts/header" %>
     <span class="notice"><%= notice %></span>
     <span class="alert"><%= alert %></span>
-  
+    
     <div class="container">
       <%= yield %>
     </div> <!-- /container -->
